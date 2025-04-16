@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca Virtual</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Biblioteca Virtual</h1>
+  </header>
+
+  <nav>
+    <a href="/">Home</a>
+    <a href="#">Sobre</a>
+    <a href="{{ url_for('listar_livros') }}">Catálogo</a>
+    <a href="#">Contato</a>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <h2>Bem-vindo à Biblioteca Virtual</h2>
+      <p>Explore milhares de livros e conteúdos enriquecedores!</p>
+    </div>
+  </section>
+
+  <section class="categories">
+    <div class="category">
+      <h3>Ficção</h3>
+      <p>Romances, aventuras e muito mais!</p>
+    </div>
+    <div class="category">
+      <h3>História</h3>
+      <p>Aprenda sobre o passado e suas lições!</p>
+    </div>
+    <div class="category">
+      <h3>Ciência</h3>
+      <p>Explore o mundo das descobertas!</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Biblioteca Virtual - Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>

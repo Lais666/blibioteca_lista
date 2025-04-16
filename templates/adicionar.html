@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Adicionar Livro</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Biblioteca Virtual</h1>
+  </header>
+
+  <nav>
+    <a href="/">Home</a>
+    <a href="#">Sobre</a>
+    <a href="{{ url_for('listar_livros') }}">Catálogo</a>
+    <a href="#">Contato</a>
+  </nav>
+
+  <section class="container">
+    <h2 style="text-align: center; margin: 30px 0;">➕ Adicionar Novo Livro</h2>
+    <form action="/adicionar" method="post" class="formulario">
+      <input type="text" name="titulo" placeholder="Título" required>
+      <input type="text" name="autor" placeholder="Autor" required>
+      <input type="number" name="ano" placeholder="Ano" required>
+      <button type="submit">Salvar</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Biblioteca Virtual - Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>

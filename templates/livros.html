@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Catálogo de Livros</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <header>
+    <h1>Biblioteca Virtual</h1>
+  </header>
+
+  <nav>
+    <a href="{{ url_for('index') }}">Home</a>
+    <a href="{{ url_for('listar_livros') }}">Catálogo</a>
+  </nav>
+
+  <div class="container">
+    <h2 style="margin-bottom: 20px;">Lista de Livros</h2>
+
+    <!-- Exibe mensagens flash -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="flash-messages">
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+
+    <!-- Link para adicionar livro -->
+    <div style="margin-bottom: 20px;">
+      <a href="{{ url_for('abrir_adicionar') }}" class="btn-add">+ Adicionar Livro</a>
+
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Título</th>
+          <th>Autor</th>
+          <th>Ano</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for livro in livros %}
+        <tr>
+          <td>{{ livro.codigo }}</td>
+          <td>{{ livro.titulo }}</td>
+          <td>{{ livro.autor }}</td>
+          <td>{{ livro.ano }}</td>
+          <td>
+            <!-- Link para editar -->
+            <a href="{{ url_for('abrir_editar', codigo=livro.codigo) }}" title="Editar" class="icon">✏️</a>
+
+          <!-- Formulário para excluir livro -->
+          <form action="{{ url_for('excluir', codigo=livro.codigo) }}" method="POST" style="display:inline;">
+            <button type="submit" title="Excluir" class="icon">🗑️</button>
+          </form>
+
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Biblioteca Virtual - Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>
